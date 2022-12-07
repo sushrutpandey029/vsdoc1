@@ -238,7 +238,7 @@ const zipfile = async (req,res) => {
 }
 
 const gameData = async (req,res) =>{
-    try{
+     try{
         const patientId = req.query.patientId;
         if(!patientId){
             return res.status(400).send({status:false,message:"Please enter valid Patient Id."});
@@ -247,32 +247,19 @@ const gameData = async (req,res) =>{
         if(!patientId){
             return res.status(400).send({status:true,message:"Please Enter patient  id"});
         }
-
-        // if (!(/^\w+([\.-]?\w+)@\w+([\. -]?\w+)(\.\w{2,3})+$/.test(patientId))) {
-        //      return res.status(400).send({ status: false, message: "Doctor email is not valid" });
-        // }
-
-        const patientData = await patientModel.findOne({__id:patientId});
-        if(!patientData){
-            return res.status(400).send({status:false,message:"This id is not registered"});
-        }
-
-        const array = patientData.progress;
-        let gameHistory =[];
-
-        for(let i = array.length-1; i>=0 ;i--){
-           gameHistory.push(array[i]);
-        }
         
-        if(gameHistory.length == 0){
-            return res.status(400).send({status:false,message:"No games have been played yet"})
+        const gamedata = await progressModel.find({ patientId: patientId}).select({ _id: 1, counter: 1, gameId: 1, patientId: 1, overralrating: 1, date:1, elapsedTime: 1, LoudnessTarget: 1, NumberOfTrials: 1, cumulativeDurationOfSounds: 1, MeanPitch: 1, meanLoudness: 1,  stdDevPitch: 1, stdDevLoudness: 1, rangepitchMin: 1, rangepitchMax: 1, rangeLoudnessMin: 1, rangeLoudnessmax: 1, audioId: 1})
+
+        if (!gamedata) {
+            return res.status(400).send({ status: false, msg: "game data not found please enter valid id" })
+
         }
 
-        return res.status(200).send({status:true,data:gameHistory});
+        return res.status(200).send({ status: true, msg: "game details", data: gamedata })
 
     }
-    catch(error){
-        return res.status(500).send({status: false, message : error.message});
+    catch (err) {
+        return res.status(500).send({ status: false, msg: err.message })
     }
 }
 
