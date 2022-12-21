@@ -3,7 +3,13 @@ const ObjectId = mongoose.Schema.Types.ObjectId
 
 const progressSchema = new mongoose.Schema({
     
-    counter:String,
+    counter:{
+        type:String,
+    },
+    
+    gamebase:{
+        type:String,
+    }
     
     gameId:{
         type:String,
