@@ -9,7 +9,7 @@ const progressSchema = new mongoose.Schema({
     
     gamebase:{
         type:String,
-    }
+    },
     
     gameId:{
         type:String,
