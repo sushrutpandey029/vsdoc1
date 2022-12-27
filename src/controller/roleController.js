@@ -87,21 +87,21 @@ const login = async (req, res) => {
         let body = req.body;
 
         if (!validation.isrequestBody(body)) {
-            return res.status(400).send({ status: false, message: "Please fill the required entries" });
+            return res.status(400).send({ status: false, msg: "Please fill the required entries" });
         }
 
         const { email, password } = body;
 
         if (!validation.isValid(email)) {
-            return res.status(400).send({ status: false, message: "Please enter email id " })
+            return res.status(400).send({ status: false, msg: "Please enter email id " })
         }
 
         if (!validation.isValid(password)) {
-            return res.status(400).send({ status: false, message: "Please enter password" })
+            return res.status(400).send({ status: false, msg: "Please enter password" })
         }
 
         if (!(/^\w+([\.-]?\w+)@\w+([\. -]?\w+)(\.\w{2,3})+$/.test(email))) {
-            return res.status(400).send({ status: false, message: "email is not valid" })
+            return res.status(400).send({ status: false, msg: "email is not valid" })
 
         }
 
@@ -145,7 +145,7 @@ const login = async (req, res) => {
         return res.status(200).send({ status: true, msg: "User login successfull", data: output })
     }
     catch (error) {
-        return res.status(500).send({ status: false, message: error.message });
+        return res.status(500).send({ status: false, msg: error.message });
     }
     
 }
