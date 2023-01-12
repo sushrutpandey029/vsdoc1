@@ -15,6 +15,9 @@ const {authUser,authRole}=require("../controller/adminController")
 router.post("/docregister",roleController.createUser)
 router.post("/login",roleController.login)
 
+router.post("/phonelogin",roleController.phonelogin)
+router.post("/usernamelogin",roleController.usernamelogin)
+
 router.post("/createPatient",patientController.createPatient)
 router.get("/findPatient",patientController.findPatient)
 router.get("/docPatient",patientController.docPatient)
