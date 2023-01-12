@@ -8,6 +8,18 @@ const rolesSchema = new mongoose.Schema({
         required: true,
         trim: true 
       },
+    
+    lastfullname:{
+        type: String,
+        required: true,
+        trim: true
+    },
+
+    username:{
+        type: String,
+        require:true
+    },
+    
     email: {
         type: String,
         required: true,
@@ -65,6 +77,10 @@ const rolesSchema = new mongoose.Schema({
     payment: {
         type: Boolean,
         default: false
+    },
+    isAdmin:{
+        type:String,
+        default:false
     },
     patientData:[Object],
 },{timestamps:true})
