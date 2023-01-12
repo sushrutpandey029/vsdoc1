@@ -149,5 +149,118 @@ const login = async (req, res) => {
     }
     
 }
-module.exports = { createUser, login }
+
+
+const phonelogin = async (req, res) => {
+    try {
+        let body = req.body;
+
+        if (!validation.isrequestBody(body)) {
+            return res.status(400).send({ status: false, message: "Please fill the required entries" });
+        }
+
+        const { phone, password } = body;
+
+        if (!validation.isValid(phone)) {
+            return res.status(400).send({ status: false, message: "Please enter phone number " })
+        }
+
+        if (!validation.isValid(password)) {
+            return res.status(400).send({ status: false, message: "Please enter password" })
+        }
+
+        const user = await roleModel.findOne({ phone });
+
+        if (user) {
+           
+            const validPassword = await bcrypt.compare(password, user.password);
+            if (!validPassword) {
+                res.status(400).send({ status: false, msg: "Invalid Password" });
+            }
+        } else {
+            res.status(401).send({ status: false, msg: "User does not exist" });
+        }
+
+        req.user = user;
+
+        const token = jwt.sign({
+            userid: user._id.toString(),
+            iat: Math.floor(Date.now() / 1000),
+        },process.env.SECRET_KEY)
+        
+        console.log(token)
+        res.setHeader("Authentication", token) // Setting key Value pair of Token
+        
+
+        const output = {
+            userId: user._id,
+            token: token
+        }
+        
+        // req.session.isAuth=true;
+        return res.status(200).send({ status: true, msg: "User login successfull", data: output })
+    }
+    catch (error) {
+        return res.status(500).send({ status: false, message: error.message });
+    }
+    
+}
+
+
+
+const usernamelogin = async (req, res) => {
+    try {
+        let body = req.body;
+
+        if (!validation.isrequestBody(body)) {
+            return res.status(400).send({ status: false, message: "Please fill the required entries" });
+        }
+
+        const { username, password } = body;
+
+        if (!validation.isValid(username)) {
+            return res.status(400).send({ status: false, message: "Please enter username " })
+        }
+
+        if (!validation.isValid(password)) {
+            return res.status(400).send({ status: false, message: "Please enter password" })
+        }
+
+        const user = await roleModel.findOne({ username });
+
+        if (user) {
+           
+            const validPassword = await bcrypt.compare(password, user.password);
+            if (!validPassword) {
+                res.status(400).send({ status: false, msg: "Invalid Password" });
+            }
+        } else {
+            res.status(401).send({ status: false, msg: "User does not exist" });
+        }
+
+        req.user = user;
+
+        const token = jwt.sign({
+            userid: user._id.toString(),
+            iat: Math.floor(Date.now() / 1000),
+        },process.env.SECRET_KEY)
+        
+        console.log(token)
+        res.setHeader("Authentication", token) // Setting key Value pair of Token
+        
+
+        const output = {
+            userId: user._id,
+            token: token
+        }
+        
+        // req.session.isAuth=true;
+        return res.status(200).send({ status: true, msg: "User login successfull", data: output })
+    }
+    catch (error) {
+        return res.status(500).send({ status: false, message: error.message });
+    }
+    
+}
+module.exports = { createUser, login, phonelogin, usernamelogin }
 
