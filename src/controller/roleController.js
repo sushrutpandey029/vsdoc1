@@ -183,8 +183,12 @@ const phonelogin = async (req, res) => {
 
         req.user = user;
 
-        const token = jwt.sign({
+       const token = jwt.sign({
             userid: user._id.toString(),
+            fullname: user.fullname.toString(),
+            email: user.email.toString(),
+            phone: user.phone.toString(),
+            role: user.role.toString(),
             iat: Math.floor(Date.now() / 1000),
         },process.env.SECRET_KEY)
         
@@ -194,9 +198,12 @@ const phonelogin = async (req, res) => {
 
         const output = {
             userId: user._id,
+            fullname:user.fullname,
+            email:user.email,
+            phone:user.phone,
+            role: user.role,
             token: token
         }
-        
         // req.session.isAuth=true;
         return res.status(200).send({ status: true, msg: "User login successfull", data: output })
     }
@@ -240,8 +247,12 @@ const usernamelogin = async (req, res) => {
 
         req.user = user;
 
-        const token = jwt.sign({
+         const token = jwt.sign({
             userid: user._id.toString(),
+            fullname: user.fullname.toString(),
+            email: user.email.toString(),
+            phone: user.phone.toString(),
+            role: user.role.toString(),
             iat: Math.floor(Date.now() / 1000),
         },process.env.SECRET_KEY)
         
@@ -251,9 +262,12 @@ const usernamelogin = async (req, res) => {
 
         const output = {
             userId: user._id,
+            fullname:user.fullname,
+            email:user.email,
+            phone:user.phone,
+            role: user.role,
             token: token
         }
-        
         // req.session.isAuth=true;
         return res.status(200).send({ status: true, msg: "User login successfull", data: output })
     }
