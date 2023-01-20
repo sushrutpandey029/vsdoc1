@@ -122,11 +122,11 @@ const login = async (req, res) => {
         const token = jwt.sign({
             userid: user._id.toString(),
             fullname: user.fullname.toString(),
-//             username:user.username.toString(),
+            username:user.username.toString(),
             email: user.email.toString(),
             phone: user.phone.toString(),
             role: user.role.toString(),
-//             count:user.count.toString(),
+            count:user.count.toString(),
             iat: Math.floor(Date.now() / 1000),
         },process.env.SECRET_KEY)
         
@@ -137,11 +137,11 @@ const login = async (req, res) => {
         const output = {
             userId: user._id,
             fullname:user.fullname,
-//             username:user.username,
+            username:user.username,
             email:user.email,
             phone:user.phone,
             role: user.role,
-//             count:user.count,
+            count:user.count,
             token: token
         }
         
