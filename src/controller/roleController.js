@@ -122,6 +122,7 @@ const login = async (req, res) => {
         const token = jwt.sign({
             userid: user._id.toString(),
             fullname: user.fullname.toString(),
+            username:user.username.toString(),
             email: user.email.toString(),
             phone: user.phone.toString(),
             role: user.role.toString(),
@@ -136,6 +137,7 @@ const login = async (req, res) => {
         const output = {
             userId: user._id,
             fullname:user.fullname,
+            username:user.username,
             email:user.email,
             phone:user.phone,
             role: user.role,
@@ -188,6 +190,7 @@ const phonelogin = async (req, res) => {
        const token = jwt.sign({
             userid: user._id.toString(),
             fullname: user.fullname.toString(),
+           username:user.username.toString(),
             email: user.email.toString(),
             phone: user.phone.toString(),
             role: user.role.toString(),
@@ -202,6 +205,7 @@ const phonelogin = async (req, res) => {
         const output = {
             userId: user._id,
             fullname:user.fullname,
+            username:user.username,
             email:user.email,
             phone:user.phone,
             role: user.role,
@@ -254,6 +258,7 @@ const usernamelogin = async (req, res) => {
          const token = jwt.sign({
             userid: user._id.toString(),
             fullname: user.fullname.toString(),
+             username:user.username.toString(),
             email: user.email.toString(),
             phone: user.phone.toString(),
             role: user.role.toString(),
@@ -268,6 +273,7 @@ const usernamelogin = async (req, res) => {
         const output = {
             userId: user._id,
             fullname:user.fullname,
+            username:user.username,
             email:user.email,
             phone:user.phone,
             role: user.role,
