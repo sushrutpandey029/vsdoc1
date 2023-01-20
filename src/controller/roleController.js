@@ -125,6 +125,7 @@ const login = async (req, res) => {
             email: user.email.toString(),
             phone: user.phone.toString(),
             role: user.role.toString(),
+            count:user.count.toString(),
             iat: Math.floor(Date.now() / 1000),
         },process.env.SECRET_KEY)
         
@@ -138,6 +139,7 @@ const login = async (req, res) => {
             email:user.email,
             phone:user.phone,
             role: user.role,
+            count:user.count,
             token: token
         }
         
@@ -189,6 +191,7 @@ const phonelogin = async (req, res) => {
             email: user.email.toString(),
             phone: user.phone.toString(),
             role: user.role.toString(),
+           count:user.count.toString(),
             iat: Math.floor(Date.now() / 1000),
         },process.env.SECRET_KEY)
         
@@ -202,6 +205,7 @@ const phonelogin = async (req, res) => {
             email:user.email,
             phone:user.phone,
             role: user.role,
+            count:user.count,
             token: token
         }
         // req.session.isAuth=true;
@@ -253,6 +257,7 @@ const usernamelogin = async (req, res) => {
             email: user.email.toString(),
             phone: user.phone.toString(),
             role: user.role.toString(),
+             count:user.count.toString(),
             iat: Math.floor(Date.now() / 1000),
         },process.env.SECRET_KEY)
         
@@ -266,6 +271,7 @@ const usernamelogin = async (req, res) => {
             email:user.email,
             phone:user.phone,
             role: user.role,
+            count: user.count,
             token: token
         }
         // req.session.isAuth=true;
