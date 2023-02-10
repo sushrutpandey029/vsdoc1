@@ -6,10 +6,6 @@ const patientSchema = new mongoose.Schema({
         type: ObjectId,
         ref: "roles",
     },
-     adminid:{
-        type: String,
-         default: "0"
-    },
     patientFullName: {
         type: String,
         required: true,
