@@ -8,6 +8,7 @@ const patientSchema = new mongoose.Schema({
     },
      adminid:{
         type: ObjectId,
+         default: "0"
     },
     patientFullName: {
         type: String,
