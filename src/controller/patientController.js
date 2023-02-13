@@ -284,7 +284,7 @@ const gameData = async (req,res) =>{
             return res.status(400).send({status:true,message:"Please Enter patient  id"});
         }
         
-        const gamedata = await progressModel.find({ patientId: patientId}).select({ _id: 1, counter: 1, gameId: 1, patientId: 1, overralrating: 1, date:1, elapsedTime: 1, LoudnessTarget: 1, NumberOfTrials: 1, cumulativeDurationOfSounds: 1, MeanPitch: 1, meanLoudness: 1,  stdDevPitch: 1, stdDevLoudness: 1, rangepitchMin: 1, rangepitchMax: 1, rangeLoudnessMin: 1, rangeLoudnessmax: 1, audioId: 1})
+        const gamedata = await progressModel.find({ patientId: patientId}).select({ _id: 1, gamebase: 1, counter: 1, gameId: 1, patientId: 1, overralrating: 1, date:1, elapsedTime: 1, LoudnessTarget: 1, NumberOfTrials: 1, cumulativeDurationOfSounds: 1, MeanPitch: 1, meanLoudness: 1,  stdDevPitch: 1, stdDevLoudness: 1, rangepitchMin: 1, rangepitchMax: 1, rangeLoudnessMin: 1, rangeLoudnessmax: 1, audioId: 1})
 
         if (!gamedata) {
             return res.status(400).send({ status: false, msg: "game data not found please enter valid id" })
