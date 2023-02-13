@@ -63,6 +63,12 @@ const rolesSchema = new mongoose.Schema({
         type: String,
     },  
 
+    file: {
+        type: String,
+        default: "test.jpg",
+    },
+
+
     Country:{
         type: String,
     }, 
