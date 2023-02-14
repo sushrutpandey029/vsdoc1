@@ -139,7 +139,7 @@ const login = async (req, res) => {
             userId: user._id,
             fullname:user.fullname,
             username:user.username,
-            adminid:user.username,
+            adminid:user.adminid,
             email:user.email,
             phone:user.phone,
             role: user.role,
