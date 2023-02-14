@@ -123,11 +123,11 @@ const login = async (req, res) => {
             userid: user._id.toString(),
             fullname: user.fullname.toString(),
             username:user.username.toString(),
+            adminid:user.adminin.toString(),
             email: user.email.toString(),
             phone: user.phone.toString(),
             role: user.role.toString(),
             count:user.count.toString(),
-            adminid:user.adminid.toString(),
             iat: Math.floor(Date.now() / 1000),
         },process.env.SECRET_KEY)
         
@@ -139,11 +139,11 @@ const login = async (req, res) => {
             userId: user._id,
             fullname:user.fullname,
             username:user.username,
+            adminid:user.adminid,
             email:user.email,
             phone:user.phone,
             role: user.role,
             count:user.count,
-            adminid:user.adminid,
             token: token
         }
         
