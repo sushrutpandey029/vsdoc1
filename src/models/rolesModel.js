@@ -7,7 +7,8 @@ const rolesSchema = new mongoose.Schema({
         type: String,
         required: true,
         trim: true 
-      },
+    },
+
     lastfullname:{
         type: String,
         required: true,
@@ -18,10 +19,10 @@ const rolesSchema = new mongoose.Schema({
         type: String,
         require:true
     },
-    
+
     adminid:{
-        type: String,
-        require:true
+      type:String,
+      require:true
     },
     
     email: {
@@ -31,6 +32,8 @@ const rolesSchema = new mongoose.Schema({
         match: /^\w+([\.-]?\w+)@\w+([\. -]?\w+)(\.\w{2,3})+$/,
         trim:true
     },
+
+
     Dob:{
         type:String
     },
@@ -42,42 +45,68 @@ const rolesSchema = new mongoose.Schema({
         match: /^(\+91[\-\s]?)?[0]?(91)?[789]\d{9}$/,
         trim:true
     },
+
     password: {
         type: String,
         required: true,
         trim:true,
         
     },
+
     role: {
         type: String,
         enum: ["Admin","Sub-Admin","Doctor"],
         default: "Doctor"
     },
+
     Address:{
         type: String,
     },  
+
+    file: {
+        type: String,
+        default: "test.jpg",
+    },
+
+
     Country:{
         type: String,
-    },  
+    }, 
+
     City:{
         type: String,
-    },  
+    }, 
+
     State:{
         type: String,
     }, 
+
     pincode:{
         type: String,
     },
+
     Biography:{
         type:String
     },
+
     status:{
         type:String
     },
+    
     payment: {
         type: Boolean,
         default: false
     },
+    isdoctor:{
+        type:String,
+        default:true
+    },
+
+    count:{
+        type:String,
+        default:"0"
+    },
+
     patientData:[Object],
 },{timestamps:true})
 
