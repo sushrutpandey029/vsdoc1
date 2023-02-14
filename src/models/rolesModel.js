@@ -6,7 +6,7 @@ const rolesSchema = new mongoose.Schema({
     fullname: {
         type: String,
         required: true,
-        trim: true 
+        trim: true
     },
 
     lastfullname:{
@@ -22,7 +22,6 @@ const rolesSchema = new mongoose.Schema({
 
     adminid:{
         type: String,
-        require:true
     },
     
     email: {
@@ -62,12 +61,6 @@ const rolesSchema = new mongoose.Schema({
     Address:{
         type: String,
     },  
-
-    file: {
-        type: String,
-        default: "test.jpg",
-    },
-
 
     Country:{
         type: String,
