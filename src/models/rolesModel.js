@@ -77,7 +77,7 @@ const rolesSchema = new mongoose.Schema({
     payment: {
         type: Boolean,
         default: false
-    }
+    },
     patientData:[Object],
 },{timestamps:true})
 
