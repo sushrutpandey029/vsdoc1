@@ -21,8 +21,8 @@ const rolesSchema = new mongoose.Schema({
     },
 
     adminid:{
-      type:String,
-      require:true
+        type: String,
+        require:true
     },
     
     email: {
