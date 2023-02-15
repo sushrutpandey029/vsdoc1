@@ -188,10 +188,10 @@ const phonelogin = async (req, res) => {
 
         req.user = user;
 
-       const token = jwt.sign({
+        const token = jwt.sign({
             userid: user._id.toString(),
             fullname: user.fullname.toString(),
-            username:user.username.toString(),
+            adminid:user.adminid.toString(),
             email: user.email.toString(),
             phone: user.phone.toString(),
             role: user.role.toString(),
@@ -207,6 +207,7 @@ const phonelogin = async (req, res) => {
             userId: user._id,
             fullname:user.fullname,
             username:user.username,
+            adminid:user.adminid,
             email:user.email,
             phone:user.phone,
             role: user.role,
@@ -259,11 +260,11 @@ const usernamelogin = async (req, res) => {
          const token = jwt.sign({
             userid: user._id.toString(),
             fullname: user.fullname.toString(),
-             username:user.username.toString(),
+            adminid:user.adminid.toString(),
             email: user.email.toString(),
             phone: user.phone.toString(),
             role: user.role.toString(),
-             count:user.count.toString(),
+            count:user.count.toString(),
             iat: Math.floor(Date.now() / 1000),
         },process.env.SECRET_KEY)
         
@@ -275,10 +276,11 @@ const usernamelogin = async (req, res) => {
             userId: user._id,
             fullname:user.fullname,
             username:user.username,
+            adminid:user.adminid,
             email:user.email,
             phone:user.phone,
             role: user.role,
-            count: user.count,
+            count:user.count,
             token: token
         }
         // req.session.isAuth=true;
