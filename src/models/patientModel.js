@@ -6,11 +6,14 @@ const patientSchema = new mongoose.Schema({
         type: ObjectId,
         ref: "roles",
     },
+    adminid:{
+        type: ObjectId,
+    },
     patientFullName: {
         type: String,
         required: true,
         trim: true 
-      },
+    },
     email: {
         type: String,
         required: true,
@@ -33,13 +36,16 @@ const patientSchema = new mongoose.Schema({
     },
     address : {
         type: String,
-    },
+    },    
     disabalityType:{
         type:String,
         required:true,
       
     },
-    progress:[Object]
+    progress:{
+       type: Object,
+       default: []
+    }
 },{timestamps:true})
 
 module.exports=mongoose.model("patient",patientSchema)
