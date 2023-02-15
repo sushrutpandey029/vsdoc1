@@ -223,6 +223,16 @@ const phonelogin = async (req, res) => {
     
 }
 
+// const superadminlogout = async (req,res)=>{
+//    req.session.destroy((err) => {
+//       if (err) {
+//         console.log(err);
+//       } else {
+//         res.clearCookie('session-id');
+//         return res.status(500).send({ status: true, message: "Doctor Logout"})
+//       }
+//     });
+// })
 
 
 const usernamelogin = async (req, res) => {
