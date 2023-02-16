@@ -32,14 +32,14 @@ const SESSION_IDLE_TIMEOUT = ONE_DAY*20; //20 DAY IS IDLE TIME
 app.use(session({
     secret:process.env.SECRET,
     resave:false,
-    saveUninitialized:false,
+    saveUninitialized:true,
     store:store,
     cookie:{
         maxAge:+SESSION_IDLE_TIMEOUT,
-        sameSite:trusted
+        sameSite:"None" //changed from secure to none.. earlier it was checking if request sending site was secure or not
     }
  })
- );
+)
   
 app.use('/', route);
 
